@@ -1,0 +1,12 @@
+<h1><%= @campaign.title %></h1>
+<p><%= @campaign.description %></p>
+<p>Goal: <%= number_to_currency(@campaign.goal) %></p>
+<p>Ends On: <%= @campaign.ends_on.strftime("%Y-%b-%d") %></p>
+
+<% if can? :edit, @campaign %>
+  <%= link_to "Edit", edit_campaign_path(@campaign), class: "btn btn-primary" %>
+<% end %>
+
+<% if can? :destroy, @campaign %>
+  <%= link_to "Delete", campaign_path(@campaign), method: :delete, class: "btn btn-danger" %>
+<% end %>

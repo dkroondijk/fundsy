@@ -1,0 +1,9 @@
+<%= link_to "New Campaign", new_campaign_path, class: "btn btn-primary" %>
+
+<% @campaigns.each do |campaign| %>
+  <div class="well">
+    <%= link_to campaign.title, campaign %>
+    <p><%= campaign.description.truncate(140) %></p>
+  </div>
+<% end %>
+  
