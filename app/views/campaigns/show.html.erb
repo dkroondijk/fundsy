@@ -1,12 +1,25 @@
-<h1><%= @campaign.title %></h1>
-<p><%= @campaign.description %></p>
-<p>Goal: <%= number_to_currency(@campaign.goal) %></p>
-<p>Ends On: <%= @campaign.ends_on.strftime("%Y-%b-%d") %></p>
+<div class="col-md-9">
+  <h1><%= @campaign.title %></h1>
+  <p><%= @campaign.description %></p>
+  <p>Goal: <%= number_to_currency(@campaign.goal) %></p>
+  <p>Ends On: <%= @campaign.ends_on.strftime("%Y-%b-%d") %></p>
 
-<% if can? :edit, @campaign %>
-  <%= link_to "Edit", edit_campaign_path(@campaign), class: "btn btn-primary" %>
-<% end %>
+  <% if can? :edit, @campaign %>
+    <%= link_to "Edit", edit_campaign_path(@campaign), class: "btn btn-primary" %>
+  <% end %>
+  
+  <% if can? :destroy, @campaign %>
+    <%= link_to "Delete", campaign_path(@campaign), method: :delete, class: "btn btn-danger" %>
+  <% end %>
+</div>
 
-<% if can? :destroy, @campaign %>
-  <%= link_to "Delete", campaign_path(@campaign), method: :delete, class: "btn btn-danger" %>
-<% end %>
+<div class="col-md-3">
+  <% @campaign.reward_levels.each do |reward_level| %>
+    <div class="well">
+      <h3><%= number_to_currency(reward_level.amount) %></h3>
+      <p><%= reward_level.description %></p>
+    </div>
+  <% end %>    
+</div>
+
+  
