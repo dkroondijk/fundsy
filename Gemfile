@@ -34,6 +34,8 @@ gem 'quiet_assets'
 
 gem 'cancancan', '~> 1.10'
 
+gem "cocoon"
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

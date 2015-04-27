@@ -1,0 +1,7 @@
+<div class="nested-fields">
+  <%= f.input :amount %>
+  <%= f.input :description %>
+  <%#= f.input :_destroy, as: :boolean, label: "Delete" %>
+  <%= link_to_remove_association "Delete Reward Level", f, class: "btn btn-danger" %>
+  <br>  
+</div>

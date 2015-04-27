@@ -4,11 +4,15 @@
   <%= f.input :goal %>
   <%= f.input :ends_on %>
   <h2>Reward Levels</h2>
-  <%= f.simple_fields_for :reward_levels do |rl| %>
-    <%= rl.input :amount %>
-    <%= rl.input :description %>
-    <%= rl.input :_destroy, as: :boolean, label: "Delete" %>
-    <br>
-  <% end %>
+  <div id="reward-levels">
+    <%= f.full_error :reward_levels %>
+    <%= f.simple_fields_for :reward_levels do |rl| %>
+      <%=  render "reward_level_fields", f: rl %>
+    <% end %>    
+  </div>
+  <div class="links">
+    <%= link_to_add_association 'add reward level', f, :reward_levels, class: "btn btn-info" %>
+  </div>
+  <br>
   <%= f.submit "Create Campaign" %>
 <% end %>
